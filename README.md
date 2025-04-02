@@ -16,4 +16,46 @@ https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fyoutube.com%2F
   Considered different meal options based on morning, afternoon, and evening
 
   ##Screenshots
-  
+  https://github.com/ST10494793-Mpilenhle-Vilakazi/ChowApp/blob/master/Screenshot%202025-04-02%20230604.png
+  https://github.com/ST10494793-Mpilenhle-Vilakazi/ChowApp/blob/master/Screenshot_2025.04.02_23.05.04.602.png
+  https://github.com/ST10494793-Mpilenhle-Vilakazi/ChowApp/blob/master/Screenshot_2025.04.02_23.05.17.027.png
+
+// Code Attribution 
+// This implementation of setOnClickListener was based on Android Developers' official documentation. 
+// Link: https://developer.android.com/reference/android/widget/Button#setOnClickListener(android.view.View.OnClickListener)
+// Author: Android Developers 
+btnSuggestMeal.setOnClickListener {
+    val hour = inputText.toIntOrNull()
+
+    if (hour != null && hour in 0..23) {
+        val suggestedMeal = suggestMeal(hour)
+        txtMealSuggestion.text = "Suggested Meal: $suggestedMeal"
+    } else {
+        Toast.makeText(this, "Please enter a valid time (0-23)", Toast.LENGTH_SHORT).show()
+    }
+}
+
+// Code Attribution 
+// This Kotlin 'when' expression structure was adapted from the official Kotlin documentation. 
+// Link: https://kotlinlang.org/docs/control-flow.html#when-expression 
+// Author: JetBrains (Kotlin Team) 
+private fun suggestMeal(hour: Int): String {
+    return when (hour) {
+        in 5..10 -> "Breakfast suggestion: Pancakes or Omelette"
+        in 11..15 -> "Lunch suggestion: Sandwich or Salad"
+        in 16..21 -> "Dinner suggestion: Pasta or Grilled Chicken"
+        else -> "It's not a typical mealtime. How about a snack?"
+    }
+}
+
+// Code Attribution 
+// The use of toIntOrNull() for safe conversion was learned from the Kotlin Standard Library documentation. 
+// Link: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int-or-null.html
+// Author: JetBrains (Kotlin Team) 
+val hour = inputText.toIntOrNull()
+
+// Code Attribution 
+// The use of Toast messages for displaying errors was based on Android Developers documentation. 
+// Link: https://developer.android.com/guide/topics/ui/notifiers/toasts
+// Author: Android Developers 
+Toast.makeText(this, "Please enter a valid time (0-23)", Toast.LENGTH_SHORT).show()
